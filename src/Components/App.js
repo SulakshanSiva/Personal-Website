@@ -1,11 +1,13 @@
 import '../Styles/App.css'
 import Navbar from './Navbar';
+import About from './About'
 
 function App() {
+
   return (
     <div className="App">
-        <p className='display-4'>Hi</p>
         <Navbar/>
+        <About/>
     </div>
   );
 }
