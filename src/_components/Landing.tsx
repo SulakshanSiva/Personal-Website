@@ -4,7 +4,7 @@ import React from 'react'
 
 const Landing = () => {
   return (
-    <div className="flex items-center justify-center flex-col text-center">
+    <div className="flex items-center flex-col text-center">
       <h1 className="text-5xl font-large text-primary">Sulakshan Sivakumaran</h1>
       <h1 className='text-lg font-normal mt-3'>Building. Learning. Innovating.</h1>
 
