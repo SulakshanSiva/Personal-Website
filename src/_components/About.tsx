@@ -9,7 +9,10 @@ const About = () => {
         </h1>
 
         <p className="text-gray-800 mt-4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          I am currently in my 5th and final year at the University of Guelph, where I am completing a 
+          Bachelor of Computing in Computer Science. I have a passion for <strong>software development</strong>, with a 
+          particular interest in <strong>system design</strong> and <strong>AI</strong>. I am always on the lookout for opportunities to 
+          build solutions to real problems, with a focus on individual growth.        
         </p>
       </div>
     </div>
