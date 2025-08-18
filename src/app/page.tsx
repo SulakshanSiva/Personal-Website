@@ -1,6 +1,7 @@
 import Landing from "@/_components/Landing";
 import About from "@/_components/About";
 import Experience from "@/_components/Experience";
+import Projects from "@/_components/Projects";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <Landing />
         <About />
         <Experience />
+        <Projects/>
     </div>
   );
 }
