@@ -11,7 +11,7 @@ interface ProjectProps {
 
 const Project: React.FC<ProjectProps> = ({ image, title, description, github }) => {
   return (
-    <div className="border border-gray-300 rounded-lg shadow-sm p-4 w-full flex flex-col md:flex-row gap-6 items-start">
+    <div className="border border-gray-300 rounded-lg shadow-sm p-4 w-full flex flex-col md:flex-row gap-6 items-start hover:border-[#FFD700]">
       {/* Image */}
       <div className="w-full md:w-40 h-48 md:h-40 rounded-md overflow-hidden border flex-shrink-0 flex items-center justify-center bg-gray-50">
         <Image
