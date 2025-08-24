@@ -12,7 +12,7 @@ const Landing = () => {
       <div className="flex flex-row items-center justify-around sm:justify-between w-full max-w-md mt-5">
         {/* Resume */}
         <a
-          href="https://drive.google.com/file/d/1clsAP0yGc0tNUMKyDn9W9SDUbYKZXnUu/view?usp=sharing"
+          href="https://drive.google.com/file/d/1Pe3fHIkMBQ9pneqnu3tC7Cpq0oVbUbGo/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="border border-black rounded-full px-6 py-2 transition-colors duration-300 hover:bg-black hover:text-white inline-flex items-center justify-center"
