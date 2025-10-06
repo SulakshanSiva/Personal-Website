@@ -12,9 +12,9 @@ const experiences = [
     logo: Dayforce.src,
     company: "Dayforce",
     website: "https://www.dayforce.com/",
-    position: "AI Transformation Engineer Intern",
+    position: "AI Engineer Intern",
     dates: "Sep. 2025 – Dec. 2025",
-    description: "Incoming AI Intern @ Dayforce.",
+    description: "Developing an MCP using Python and LangGraph to grant access to external tools to improve LLM context and reasoning.",
   },
   {
     logo: Camis.src,
