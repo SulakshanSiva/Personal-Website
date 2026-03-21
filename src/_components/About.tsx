@@ -9,11 +9,27 @@ const About = () => {
         </h1>
 
         <p className="text-gray-800 mt-4">
-          I am currently in my 5th and final year at the University of Guelph, where I am completing a 
-          Bachelor of Computing in Computer Science. I have a passion for <strong>software development</strong>, with a 
-          particular interest in <strong>system design</strong> and <strong>AI</strong>. I am always on the lookout for opportunities to 
-          build solutions to real problems, with a focus on individual growth.        
-        </p>
+
+          Currently building AI-powered solutions at <strong>Dayforce</strong> as a Software Engineer, with a focus on creating agentic solutions to increase productivity & employee efficiency. I have experience with...
+          
+          <ul className="list-disc list-outside ml-3 mt-4 mb-4 space-y-2 text-gray-800">
+            <li>
+              Developing AI agents in <strong>LangGraph</strong> to complete tasks autonomously
+            </li>
+            <li>
+              Creating <strong>MCP</strong> servers and tools to improve agent capabilities
+            </li>
+            <li>
+              Building reliable, secure, and scalable APIs in <strong>FastAPI</strong>/<strong>Java</strong>
+            </li>
+            <li>
+              Automating manual processes, saving <strong>100+</strong> hours of manual work
+            </li>
+        </ul>
+
+          Recently graduated from the University of Guelph with a degree in Computer Science, I am actively seeking Software Engineer roles, with a particular interest in <strong>system design</strong> and <strong>AI</strong>. I am always on the lookout for opportunities to build solutions to real problems, with a focus on individual growth. 
+      </p>
+
       </div>
     </div>
   )

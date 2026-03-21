@@ -6,15 +6,30 @@ import Uog from "../assets/images/uog.jpeg"
 import Ncr from "../assets/images/Ncr.jpg"
 import Fn from "../assets/images/first-national-financial.png"
 
-// !! List of experiences
 const experiences = [
+    {
+    logo: Dayforce.src,
+    company: "Dayforce",
+    website: "https://www.dayforce.com/",
+    position: "Software Engineer Intern",
+    dates: "May. 2026 – Aug. 2026",
+    description: "Building AI powered solutions using React.js, TypeScript, FastAPI, SQL, and LangGraph.",
+  },
   {
     logo: Dayforce.src,
     company: "Dayforce",
     website: "https://www.dayforce.com/",
     position: "Software Engineer Intern",
     dates: "Sep. 2025 – Dec. 2025",
-    description: "Developing an MCP using Python and LangGraph to grant access to external tools to improve LLM context and reasoning.",
+    description: "Led the development of an AI agent and custom MCP servers to answer internal employee queries on Dayforce products and org. insights.",
+  },
+  {
+    logo: Uog.src,
+    company: "University of Guelph",
+    website: "https://github.com/SulakshanSiva/UOG-HelpDesk",
+    position: "Teaching Assistant",
+    dates: "Sep. 2025 – Dec. 2025",
+    description: "Developed a digital classroom to enable 200+ students to interact with teaching staff at the University of Guelph.",
   },
   {
     logo: Camis.src,
