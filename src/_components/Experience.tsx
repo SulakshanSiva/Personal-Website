@@ -7,12 +7,12 @@ import Ncr from "../assets/images/Ncr.jpg"
 import Fn from "../assets/images/first-national-financial.png"
 
 const experiences = [
-    {
+  {
     logo: Dayforce.src,
     company: "Dayforce",
     website: "https://www.dayforce.com/",
-    position: "Software Engineer Intern",
-    dates: "May. 2026 – Aug. 2026",
+    position: "Software Engineer I",
+    dates: "Sep. 2026 – Present",
     description: "Building AI powered solutions using React.js, TypeScript, FastAPI, SQL, and LangGraph.",
   },
   {
@@ -20,8 +20,16 @@ const experiences = [
     company: "Dayforce",
     website: "https://www.dayforce.com/",
     position: "Software Engineer Intern",
+    dates: "May 2026 – Aug. 2026",
+    description: "Developed Cerebro, an AI agent built with LangGraph and Python that helps employees resolve Salesforce cases.",
+  },
+  {
+    logo: Dayforce.src,
+    company: "Dayforce",
+    website: "https://www.dayforce.com/",
+    position: "Software Engineer Intern",
     dates: "Sep. 2025 – Dec. 2025",
-    description: "Led the development of an AI agent and custom MCP servers to answer internal employee queries on Dayforce products and org. insights.",
+    description: "Led the development of a scalable MCP server framework in Python using FastAPI and FastMCP.",
   },
   {
     logo: Uog.src,
