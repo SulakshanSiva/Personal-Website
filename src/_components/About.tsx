@@ -10,7 +10,7 @@ const About = () => {
 
         <p className="text-gray-800 mt-4">
 
-          Currently building AI-powered solutions at <strong>Dayforce</strong> as a <strong>Software Engineer I</strong>, with a focus on creating agentic solutions to increase employee productivity, automate manual effort, and reduce operational costs and time. I have experience with...
+          Currently building AI-powered solutions at <strong>Dayforce</strong> as a <strong>Software Engineer II</strong>, with a focus on creating agentic solutions to increase employee productivity, automate manual effort, and reduce operational costs and time. I have experience with...
           
           <ul className="list-disc list-outside ml-3 mt-4 mb-4 space-y-2 text-gray-800">
             <li>
