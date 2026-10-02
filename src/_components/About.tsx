@@ -4,15 +4,15 @@ const About = () => {
   return (
     <div className="flex flex-col items-center w-full py-12">
       <div className="flex flex-col items-start text-left w-full sm:max-w-md md:max-w-lg lg:max-w-124">
-        <h1 className="text-lg font-bold border-b-2 border-black">
+        <h1 className="text-lg font-bold border-b-2 border-outline">
           About
         </h1>
 
-        <p className="text-gray-800 mt-4">
+        <div className="text-muted mt-4">
 
           Currently building AI-powered solutions at <strong>Dayforce</strong> as a <strong>Software Engineer II</strong>, with a focus on creating agentic solutions to increase employee productivity, automate manual effort, and reduce operational costs and time. I have experience with...
           
-          <ul className="list-disc list-outside ml-3 mt-4 mb-4 space-y-2 text-gray-800">
+          <ul className="list-disc list-outside ml-3 mt-4 mb-4 space-y-2 text-muted">
             <li>
               Developing AI agents in <strong>LangGraph</strong> to complete tasks autonomously
             </li>
@@ -28,7 +28,7 @@ const About = () => {
         </ul>
 
          I am always on the lookout for opportunities to build solutions to real problems, with a focus on individual growth. 
-      </p>
+      </div>
 
       </div>
     </div>
