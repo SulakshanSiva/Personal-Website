@@ -11,13 +11,6 @@ const projects = [
       "A digital classroom created to improve the student experience at the University of Guelph. Currently used by 50+ students in the School of Computer Science.",
     github: "https://github.com/SulakshanSiva/UOG-HelpDesk",
   },
-  {
-    image: TikTok.src,
-    title: "TikTrend",
-    description:
-      "A machine learning model designed to detect and predict current/future TikTok trends.",
-    github: "https://github.com/SulakshanSiva/TikTrend",
-  },
 ];
 
 const Projects = () => {
@@ -25,7 +18,7 @@ const Projects = () => {
     <div className="flex flex-col items-center w-full py-12">
       {/* MATCHES About.tsx wrapper to align header */}
       <div className="flex flex-col items-start text-left w-full sm:max-w-md md:max-w-lg lg:max-w-124">
-        <h1 className="text-lg font-bold border-b-2 border-black">
+        <h1 className="text-lg font-bold border-b-2 border-outline">
           Projects
         </h1>
 

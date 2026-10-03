@@ -11,9 +11,9 @@ interface ProjectProps {
 
 const Project: React.FC<ProjectProps> = ({ image, title, description, github }) => {
   return (
-    <div className="border border-gray-300 rounded-lg shadow-sm p-4 w-full flex flex-col md:flex-row gap-6 items-start hover:border-[#FFD700]">
+    <div className="border border-border bg-surface rounded-lg shadow-sm p-4 w-full flex flex-col md:flex-row gap-6 items-start hover:border-accent transition-colors">
       {/* Image */}
-      <div className="w-full md:w-40 h-48 md:h-40 rounded-md overflow-hidden border flex-shrink-0 flex items-center justify-center bg-gray-50">
+      <div className="w-full md:w-40 h-48 md:h-40 rounded-md overflow-hidden border border-border flex-shrink-0 flex items-center justify-center bg-surface-muted">
         <Image
           src={image}
           alt={`${title} preview`}
@@ -32,7 +32,7 @@ const Project: React.FC<ProjectProps> = ({ image, title, description, github }) 
             href={github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-600 transition"
+            className="text-subtle hover:text-link transition"
             aria-label="View on GitHub"
             title="View on GitHub"
           >
@@ -41,7 +41,7 @@ const Project: React.FC<ProjectProps> = ({ image, title, description, github }) 
         </div>
 
         {/* Description */}
-        <p className="text-gray-800 mt-2 whitespace-pre-line">{description}</p>
+        <p className="text-muted mt-2 whitespace-pre-line">{description}</p>
       </div>
     </div>
   );
