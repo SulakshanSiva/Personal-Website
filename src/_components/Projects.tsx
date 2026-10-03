@@ -11,13 +11,6 @@ const projects = [
       "A digital classroom created to improve the student experience at the University of Guelph. Currently used by 50+ students in the School of Computer Science.",
     github: "https://github.com/SulakshanSiva/UOG-HelpDesk",
   },
-  {
-    image: TikTok.src,
-    title: "TikTrend",
-    description:
-      "A machine learning model designed to detect and predict current/future TikTok trends.",
-    github: "https://github.com/SulakshanSiva/TikTrend",
-  },
 ];
 
 const Projects = () => {

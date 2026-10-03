@@ -11,7 +11,7 @@ const experiences = [
     logo: Dayforce.src,
     company: "Dayforce",
     website: "https://www.dayforce.com/",
-    position: "Software Engineer II",
+    position: "Software Engineer I",
     dates: "Sep. 2026 – Present",
     description: "Building AI powered solutions using React.js, TypeScript, FastAPI, SQL, and LangGraph.",
   },
