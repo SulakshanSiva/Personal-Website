@@ -11,7 +11,7 @@ const experiences = [
     logo: Dayforce.src,
     company: "Dayforce",
     website: "https://www.dayforce.com/",
-    position: "Software Engineer II",
+    position: "Software Engineer I",
     dates: "Sep. 2026 – Present",
     description: "Building AI powered solutions using React.js, TypeScript, FastAPI, SQL, and LangGraph.",
   },
@@ -77,7 +77,7 @@ const Experience = () => {
   return (
     <div className="flex flex-col items-center w-full">
       <div className="flex flex-col items-start text-left w-full sm:max-w-md md:max-w-lg lg:max-w-124">
-        <h1 className="text-lg font-bold border-b-2 border-black">
+        <h1 className="text-lg font-bold border-b-2 border-outline">
           Experience
         </h1>
 
