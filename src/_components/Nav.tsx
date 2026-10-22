@@ -29,15 +29,20 @@ export default function Nav() {
   // Close the phone menu whenever the route changes
   useEffect(() => setOpen(false), [pathname]);
 
-  // Lock page scroll and allow Escape to close while the phone menu is open
+  // Lock page scroll while the phone menu is open; close it on Escape or once the
+  // viewport reaches the md breakpoint (where the menu is hidden), so scroll isn't left locked
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const desktop = window.matchMedia("(min-width: 48rem)");
+    const onResize = () => desktop.matches && setOpen(false);
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
+    desktop.addEventListener("change", onResize);
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
+      desktop.removeEventListener("change", onResize);
     };
   }, [open]);
 
