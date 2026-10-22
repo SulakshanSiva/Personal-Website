@@ -1,5 +1,6 @@
 import React from "react";
 import Project from "./Project";
+import PageHeader from "./PageHeader";
 import TikTok from "../assets/images/TikTok.png"
 import Helpdesk from "../assets/images/HelpDesk.png"
 
@@ -15,15 +16,15 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="flex flex-col items-center w-full py-12">
+    <div className="flex flex-col items-center w-full">
       {/* MATCHES About.tsx wrapper to align header */}
       <div className="flex flex-col items-start text-left w-full sm:max-w-md md:max-w-lg lg:max-w-124">
-        <h1 className="text-lg font-bold border-b-2 border-outline">
-          Projects
-        </h1>
+        <div className="w-full">
+          <PageHeader title="Projects" description="Things I've built outside of work." />
+        </div>
 
         {/* Single column down the middle */}
-        <div className="flex flex-col gap-6 mt-4 w-full">
+        <div className="flex flex-col gap-6 mt-10 w-full">
           {projects.map((p, idx) => (
             <Project
               key={idx}

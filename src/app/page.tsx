@@ -1,15 +1,12 @@
 import Landing from "@/_components/Landing";
 import About from "@/_components/About";
-import Experience from "@/_components/Experience";
-import Projects from "@/_components/Projects";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen py-24 px-4 sm:px-8">
+    // On phones, center the content vertically in the space below the header
+    <div className="flex flex-col items-center justify-center min-h-[calc(100svh-76px)] pt-6 pb-10 px-4 sm:px-8 md:justify-start md:min-h-0 md:pt-20 md:pb-24">
         <Landing />
         <About />
-        <Experience />
-        <Projects/>
     </div>
   );
 }
