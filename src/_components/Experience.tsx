@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import PageHeader from './PageHeader'
 import Dayforce from "../assets/images/Dayforce.png"
 import Camis from "../assets/images/Camis.jpeg"
 import Uog from "../assets/images/uog.jpeg"
@@ -77,12 +78,12 @@ const Experience = () => {
   return (
     <div className="flex flex-col items-center w-full">
       <div className="flex flex-col items-start text-left w-full sm:max-w-md md:max-w-lg lg:max-w-124">
-        <h1 className="text-lg font-bold border-b-2 border-outline">
-          Experience
-        </h1>
+        <div className="w-full">
+          <PageHeader title="Experience" description="Where I've worked and what I built there." />
+        </div>
 
         {/* Map through experiences */}
-        <div className="mt-6 w-full space-y-6">
+        <div className="mt-10 w-full space-y-6">
           {experiences.map((exp, index) => (
             <Card
               key={index}
