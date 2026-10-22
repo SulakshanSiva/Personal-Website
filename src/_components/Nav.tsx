@@ -101,11 +101,13 @@ export default function Nav() {
               href={page.href}
               onClick={() => setOpen(false)}
               aria-current={i === activeIndex ? "page" : undefined}
-              className={`flex w-full items-baseline justify-center gap-3 border-b border-border py-3.5 text-[34px] transition-colors hover:text-link ${
+              className={`flex w-full items-center justify-center gap-3 border-b border-border py-3.5 text-[34px] transition-colors hover:text-link ${
                 i === activeIndex ? "font-semibold" : "font-normal"
               }`}
             >
-              <span className="text-[13px] font-semibold text-subtle">0{i + 1}</span>
+              {/* Transparent border matches the label's underline so items-center aligns the text boxes;
+                  the 3px nudge then centers the number on the lowercase letters rather than the capitals */}
+              <span className="text-[13px] font-semibold text-subtle border-b-[3px] border-transparent translate-y-[3px]">0{i + 1}</span>
               <span className={`leading-tight border-b-[3px] ${i === activeIndex ? "border-accent" : "border-transparent"}`}>
                 {page.label}
               </span>
