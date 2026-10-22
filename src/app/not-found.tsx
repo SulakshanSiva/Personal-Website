@@ -2,8 +2,7 @@ import React from 'react'
 
 const not_found = () => {
     return (
-    // Fill the viewport below the Nav header (76px on phones, 78px from md up) without scrolling
-    <main className="min-h-[calc(100svh-76px)] md:min-h-[calc(100svh-78px)] flex flex-col bg-background text-foreground">
+    <main className="min-h-screen flex flex-col bg-background text-foreground">
 
       <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
 

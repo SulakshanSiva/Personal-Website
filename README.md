@@ -4,7 +4,7 @@ A personal portfolio built with Next.js, React, TypeScript, and Tailwind CSS. It
 
 ## Navigation
 
-`src/_components/Nav.tsx` renders the site navigation from its `pages` list; add an entry there when adding a page under `src/app`.
+`src/_components/Nav.tsx` renders the site navigation from its `pages` list; add an entry there when adding a page. Pages live in the `src/app/(site)` route group, whose layout renders the navigation; the 404 page (`src/app/not-found.tsx`) sits outside it, so it shows no navigation.
 
 - On desktop, centered tabs sit at the top of every page and a highlight slides to the active page.
 - On phones, a hamburger button in the top left opens a full-screen menu, and the theme toggle sits in the top right.
