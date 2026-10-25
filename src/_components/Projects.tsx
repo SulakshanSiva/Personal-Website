@@ -1,7 +1,6 @@
 import React from "react";
 import Project from "./Project";
 import PageHeader from "./PageHeader";
-import TikTok from "../assets/images/TikTok.png"
 import Helpdesk from "../assets/images/HelpDesk.png"
 
 const projects = [
