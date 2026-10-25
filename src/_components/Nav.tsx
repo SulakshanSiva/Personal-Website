@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -21,115 +21,120 @@ const socials = [
 const isActive = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
-// Renders the site header and the page below it. The phone menu is part of the page, not an overlay
-// fixed to the screen: it sits under the header and fills at least the whole screen, pushing the page
-// down, so every browser paints it edge to edge (iOS Safari won't paint fixed elements behind its
-// bottom toolbar, so a fixed overlay lets the page show through there).
-export default function Nav({ children }: { children: ReactNode }) {
+// Phone bar: menu button on the left, theme toggle on the right. It's drawn in the header and again at
+// the top of the open menu, so the button stays in the same place whether the menu is open or closed.
+const PhoneBar = ({ open, onToggle }: { open: boolean; onToggle: () => void }) => (
+  <div className="md:hidden grid grid-cols-[44px_1fr_44px] items-center p-4">
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={open ? "Close menu" : "Open menu"}
+      aria-expanded={open}
+      aria-controls="mobile-menu"
+      className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-outline transition-colors ${
+        open ? "bg-foreground text-background" : "bg-surface text-foreground hover:bg-surface-muted"
+      }`}
+    >
+      {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+    </button>
+    <span aria-hidden="true" />
+    <ThemeToggle className="inline-flex" />
+  </div>
+);
+
+export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDialogElement>(null);
   const activeIndex = pages.findIndex((page) => isActive(pathname, page.href));
 
   // Close the phone menu whenever the route changes
   useEffect(() => setOpen(false), [pathname]);
 
-  // While the phone menu is open, show it from the top of the page and lock scrolling so the page
-  // below it can't be scrolled into view. Close it on Escape or once the viewport reaches the md
-  // breakpoint (where the menu is hidden), so scroll isn't left locked.
+  // Show the phone menu as a modal dialog while open; close it once the viewport reaches the md
+  // breakpoint, where the menu is hidden. The browser handles Escape (reported through onClose),
+  // keeps focus inside the menu, and returns focus to the menu button when it closes.
   useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const menu = menuRef.current;
+    if (!menu) return;
+    if (!open) {
+      menu.close();
+      return;
+    }
+    menu.showModal();
     const desktop = window.matchMedia("(min-width: 48rem)");
     const onResize = () => desktop.matches && setOpen(false);
-    window.scrollTo(0, 0);
-    document.documentElement.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
     desktop.addEventListener("change", onResize);
-    return () => {
-      document.documentElement.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-      desktop.removeEventListener("change", onResize);
-    };
+    return () => desktop.removeEventListener("change", onResize);
   }, [open]);
 
   return (
-    <>
-      {/* While the menu is open the header stretches to the full screen height and the menu fills the rest */}
-      <header className={open ? "flex min-h-[100lvh] flex-col" : undefined}>
-        {/* Desktop: centered tabs with a sliding highlight */}
-        <nav aria-label="Main" className="hidden md:flex justify-center pt-7">
-          <div className="relative inline-flex rounded-full border border-border bg-surface-muted p-1">
-            <span
-              aria-hidden="true"
-              className={`absolute left-1 top-1 h-10 w-30 rounded-full bg-foreground transition-transform duration-[380ms] ease-[cubic-bezier(0.65,0,0.35,1)] motion-reduce:transition-none ${activeIndex === -1 ? "opacity-0" : ""}`}
-              style={{ transform: `translateX(${Math.max(activeIndex, 0) * 100}%)` }}
-            />
-            {pages.map((page, i) => (
-              <Link
-                key={page.href}
-                href={page.href}
-                aria-current={i === activeIndex ? "page" : undefined}
-                className={`relative z-10 inline-flex h-10 w-30 items-center justify-center rounded-full text-[15px] transition-colors duration-300 ${
-                  i === activeIndex ? "font-semibold text-background" : "font-medium text-foreground hover:text-link"
-                }`}
-              >
+    <header>
+      {/* Desktop: centered tabs with a sliding highlight */}
+      <nav aria-label="Main" className="hidden md:flex justify-center pt-7">
+        <div className="relative inline-flex rounded-full border border-border bg-surface-muted p-1">
+          <span
+            aria-hidden="true"
+            className={`absolute left-1 top-1 h-10 w-30 rounded-full bg-foreground transition-transform duration-[380ms] ease-[cubic-bezier(0.65,0,0.35,1)] motion-reduce:transition-none ${activeIndex === -1 ? "opacity-0" : ""}`}
+            style={{ transform: `translateX(${Math.max(activeIndex, 0) * 100}%)` }}
+          />
+          {pages.map((page, i) => (
+            <Link
+              key={page.href}
+              href={page.href}
+              aria-current={i === activeIndex ? "page" : undefined}
+              className={`relative z-10 inline-flex h-10 w-30 items-center justify-center rounded-full text-[15px] transition-colors duration-300 ${
+                i === activeIndex ? "font-semibold text-background" : "font-medium text-foreground hover:text-link"
+              }`}
+            >
+              {page.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+
+      <PhoneBar open={open} onToggle={() => setOpen((o) => !o)} />
+
+      {/* Phone menu: a full-screen modal dialog. Its backdrop matches the page background and, unlike a
+          fixed overlay, iOS Safari paints it behind its translucent toolbars too, so nothing shows
+          through. overscroll-contain keeps swipes on the menu from scrolling the page behind it. */}
+      <dialog
+        ref={menuRef}
+        id="mobile-menu"
+        aria-label="Main menu"
+        onClose={() => setOpen(false)}
+        className="m-0 h-full max-h-none w-full max-w-none flex-col overflow-y-auto overscroll-contain bg-background p-0 text-foreground open:flex backdrop:bg-background md:hidden"
+      >
+        <PhoneBar open={open} onToggle={() => setOpen(false)} />
+
+        <nav aria-label="Main" className="flex flex-col items-center gap-2 px-8 pt-24 pb-12">
+          {pages.map((page, i) => (
+            <Link
+              key={page.href}
+              href={page.href}
+              onClick={() => setOpen(false)}
+              aria-current={i === activeIndex ? "page" : undefined}
+              className={`flex w-full items-center justify-center gap-3 border-b border-border py-3.5 text-[34px] transition-colors hover:text-link ${
+                i === activeIndex ? "font-semibold" : "font-normal"
+              }`}
+            >
+              {/* Transparent border matches the label's underline so items-center aligns the text boxes;
+                  the 3px nudge then centers the number on the lowercase letters rather than the capitals */}
+              <span className="text-[13px] font-semibold text-subtle border-b-[3px] border-transparent translate-y-[3px]">0{i + 1}</span>
+              <span className={`leading-tight border-b-[3px] ${i === activeIndex ? "border-accent" : "border-transparent"}`}>
                 {page.label}
-              </Link>
+              </span>
+            </Link>
+          ))}
+          <div className="mt-7 flex justify-center gap-5 text-[15px] font-medium">
+            {socials.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-link">
+                {s.label}
+              </a>
             ))}
           </div>
         </nav>
-
-        {/* Phone: hamburger on the left, theme toggle on the right */}
-        <div className="md:hidden grid grid-cols-[44px_1fr_44px] items-center p-4">
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-outline transition-colors ${
-              open ? "bg-foreground text-background" : "bg-surface text-foreground hover:bg-surface-muted"
-            }`}
-          >
-            {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-          </button>
-          <span aria-hidden="true" />
-          <ThemeToggle className="inline-flex" />
-        </div>
-
-        {open && (
-          <nav id="mobile-menu" aria-label="Main" className="md:hidden flex flex-1 flex-col items-center gap-2 px-8 pt-24 pb-12">
-            {pages.map((page, i) => (
-              <Link
-                key={page.href}
-                href={page.href}
-                onClick={() => setOpen(false)}
-                aria-current={i === activeIndex ? "page" : undefined}
-                className={`flex w-full items-center justify-center gap-3 border-b border-border py-3.5 text-[34px] transition-colors hover:text-link ${
-                  i === activeIndex ? "font-semibold" : "font-normal"
-                }`}
-              >
-                {/* Transparent border matches the label's underline so items-center aligns the text boxes;
-                    the 3px nudge then centers the number on the lowercase letters rather than the capitals */}
-                <span className="text-[13px] font-semibold text-subtle border-b-[3px] border-transparent translate-y-[3px]">0{i + 1}</span>
-                <span className={`leading-tight border-b-[3px] ${i === activeIndex ? "border-accent" : "border-transparent"}`}>
-                  {page.label}
-                </span>
-              </Link>
-            ))}
-            <div className="mt-7 flex justify-center gap-5 text-[15px] font-medium">
-              {socials.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-link">
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-        )}
-      </header>
-
-      {/* The page stays rendered below the open menu; inert keeps focus and clicks out of it */}
-      <div inert={open}>{children}</div>
-    </>
+      </dialog>
+    </header>
   );
 }
