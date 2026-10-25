@@ -13,7 +13,7 @@ const pages = [
 ];
 
 const socials = [
-  { href: "https://drive.google.com/file/d/1Pe3fHIkMBQ9pneqnu3tC7Cpq0oVbUbGo/view", label: "Resume" },
+  { href: "https://drive.google.com/file/d/1NLkyo5hZ8E0Th-yr1Txatxm5KgiPatwV/view", label: "Resume" },
   { href: "https://www.linkedin.com/in/sulakshansiva/", label: "LinkedIn" },
   { href: "https://github.com/SulakshanSiva", label: "GitHub" },
 ];
