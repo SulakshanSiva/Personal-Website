@@ -5,7 +5,7 @@ import React from 'react'
 const Landing = () => {
   return (
     <div className="flex items-center flex-col text-center">
-      <h1 className="text-5xl font-large text-foreground">Sulakshan Sivakumaran</h1>
+      <h1 className="text-4xl md:text-5xl font-large text-foreground">Sulakshan Sivakumaran</h1>
       <h1 className='text-lg font-normal mt-3'>Building. Learning. Innovating.</h1>
 
       {/* Buttons container */}

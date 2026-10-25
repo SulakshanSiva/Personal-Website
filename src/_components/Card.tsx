@@ -11,7 +11,7 @@ interface CardProps {
   description: string;
 }
 
-const Card: React.FC<CardProps> = ({ logo, company, website, position, dates, description }) => {
+const Card = ({ logo, company, website, position, dates, description }: CardProps) => {
   return (
     <div className="border border-border bg-surface rounded-lg p-4 w-full shadow-sm hover:border-accent transition-colors duration-300">
       {/* Top Section */}
