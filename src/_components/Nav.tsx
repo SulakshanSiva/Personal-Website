@@ -46,6 +46,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDialogElement>(null);
+  const pageCoverRef = useRef<HTMLDivElement>(null);
   const activeIndex = pages.findIndex((page) => isActive(pathname, page.href));
 
   // Close the phone menu whenever the route changes
@@ -62,6 +63,7 @@ export default function Nav() {
       return;
     }
     menu.showModal();
+    pageCoverRef.current!.style.height = `${document.documentElement.scrollHeight}px`;
     const desktop = window.matchMedia("(min-width: 48rem)");
     const onResize = () => desktop.matches && setOpen(false);
     desktop.addEventListener("change", onResize);
@@ -95,9 +97,13 @@ export default function Nav() {
 
       <PhoneBar open={open} onToggle={() => setOpen((o) => !o)} />
 
-      {/* Phone menu: a full-screen modal dialog. Its backdrop matches the page background and, unlike a
-          fixed overlay, iOS Safari paints it behind its translucent toolbars too, so nothing shows
-          through. overscroll-contain keeps swipes on the menu from scrolling the page behind it. */}
+      {/* Page cover under the open menu, spanning the whole page. iOS 26.0 Safari doesn't paint the menu
+          (or anything fixed to the screen) behind its status bar and toolbar, only content positioned
+          in the page, so without this the page shows through there. */}
+      {open && <div ref={pageCoverRef} aria-hidden="true" className="absolute inset-x-0 top-0 z-50 bg-background md:hidden" />}
+
+      {/* Phone menu: a full-screen modal dialog with a backdrop matching the page background.
+          overscroll-contain keeps swipes on the menu from scrolling the page behind it. */}
       <dialog
         ref={menuRef}
         id="mobile-menu"
