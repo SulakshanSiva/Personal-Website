@@ -9,7 +9,7 @@ interface ProjectProps {
   github: string;
 }
 
-const Project: React.FC<ProjectProps> = ({ image, title, description, github }) => {
+const Project = ({ image, title, description, github }: ProjectProps) => {
   return (
     <div className="border border-border bg-surface rounded-lg shadow-sm p-4 w-full flex flex-col md:flex-row gap-6 items-start hover:border-accent transition-colors">
       {/* Image */}

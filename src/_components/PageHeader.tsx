@@ -5,7 +5,7 @@ interface PageHeaderProps {
   description: string;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
+const PageHeader = ({ title, description }: PageHeaderProps) => {
   return (
     <div className="text-center">
       <h1 className="text-4xl font-semibold tracking-tight">{title}</h1>
