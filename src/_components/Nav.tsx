@@ -13,7 +13,7 @@ const pages = [
 ];
 
 const socials = [
-  { href: "https://drive.google.com/file/d/1Pe3fHIkMBQ9pneqnu3tC7Cpq0oVbUbGo/view", label: "Resume" },
+  { href: "https://drive.google.com/file/d/1NLkyo5hZ8E0Th-yr1Txatxm5KgiPatwV/view", label: "Resume" },
   { href: "https://www.linkedin.com/in/sulakshansiva/", label: "LinkedIn" },
   { href: "https://github.com/SulakshanSiva", label: "GitHub" },
 ];
@@ -90,10 +90,12 @@ export default function Nav() {
       </div>
 
       {open && (
+        // Starts at the top of the screen (under the z-50 header) and uses the large viewport height,
+        // so it still fills the screen behind mobile browser toolbars that a bottom-0 overlay stops above
         <nav
           id="mobile-menu"
           aria-label="Main"
-          className="md:hidden fixed inset-x-0 bottom-0 top-[76px] z-40 flex flex-col items-center gap-2 overflow-y-auto bg-background px-8 pt-24"
+          className="md:hidden fixed inset-x-0 top-0 z-40 h-[100lvh] flex flex-col items-center gap-2 overflow-y-auto bg-background px-8 pt-[172px]"
         >
           {pages.map((page, i) => (
             <Link
