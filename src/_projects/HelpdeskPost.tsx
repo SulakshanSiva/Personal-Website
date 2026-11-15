@@ -30,13 +30,13 @@ const HelpdeskPost = () => {
 
       <h2>Final Report</h2>
       <p>
-        For a full write-up of the work I did on Helpdesk, read my{" "}
+        For a full write-up of the work I did on Helpdesk, read my final report{" "}
         <a
           href="https://drive.google.com/file/d/1Xk63ezdYDovp9ubRyXDO8R0P-0e41iw-/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
-          final report
+          here
         </a>
         .
       </p>

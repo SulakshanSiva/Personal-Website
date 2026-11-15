@@ -42,14 +42,14 @@ const ProjectPost = ({ project }: { project: ProjectEntry }) => {
         </div>
 
         <article
-          className="w-full mt-10 text-sm text-muted leading-relaxed
+          className="w-full mt-10 text-base text-muted leading-relaxed
             [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&>h2:first-child]:mt-0
-            [&_h3]:mt-7 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-foreground
+            [&_h3]:mt-7 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-foreground
             [&_p]:mt-3
             [&_ul]:mt-3 [&_ul]:ml-4 [&_ul]:list-disc [&_ul]:list-outside [&_ul]:space-y-2
             [&_blockquote]:mt-5 [&_blockquote]:border-l-2 [&_blockquote]:border-accent [&_blockquote]:pl-4 [&_blockquote]:italic
-            [&_code]:rounded [&_code]:bg-surface-muted [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-[13px]
-            [&_a]:text-link [&_a]:underline"
+            [&_code]:rounded [&_code]:bg-surface-muted [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-sm
+            [&_a]:text-link"
         >
           <Post />
         </article>

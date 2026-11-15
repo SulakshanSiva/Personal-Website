@@ -10,7 +10,8 @@ export const generateStaticParams = () => projects.map((p) => ({ project: p.id }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const project = getProject((await params).project);
-  return { title: `${project?.title ?? "Project"} | Sulakshan Siva` };
+  // An unknown project keeps the site title, like the root 404 page
+  return project ? { title: `${project.title} | Sulakshan Siva` } : {};
 }
 
 export default async function ProjectPage({ params }: { params: Params }) {
