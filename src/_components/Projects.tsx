@@ -1,17 +1,7 @@
 import React from "react";
 import Project from "./Project";
 import PageHeader from "./PageHeader";
-import Helpdesk from "../assets/images/HelpDesk.png"
-
-const projects = [
-  {
-    image: Helpdesk.src,
-    title: "Helpdesk",
-    description:
-      "A digital classroom created to improve the student experience at the University of Guelph. Currently used by 50+ students in the School of Computer Science.",
-    github: "https://github.com/SulakshanSiva/UOG-HelpDesk",
-  },
-];
+import { projects } from "../_projects";
 
 const Projects = () => {
   return (
@@ -24,9 +14,10 @@ const Projects = () => {
 
         {/* Single column down the middle */}
         <div className="flex flex-col gap-6 mt-10 w-full">
-          {projects.map((p, idx) => (
+          {projects.map((p) => (
             <Project
-              key={idx}
+              key={p.id}
+              href={`/projects/${p.id}`}
               image={p.image}
               title={p.title}
               description={p.description}
