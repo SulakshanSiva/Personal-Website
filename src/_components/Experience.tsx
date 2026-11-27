@@ -13,10 +13,10 @@ const experiences = [
         position: "Software Engineer I",
         dates: "Sep. 2026 – Present",
         points: [
-          "Developed [Deploy](https://www.dayforce.com/ca/blog/dayforce-deploy-hcm-implementation), an automated testing tool that leverages AI agents to create and validate Dayforce configurations, saving over 1000+ hours of manual effort",
-          "Built a Python workflow that extracts SQL query filters to guide an AI agent in generating synthetic employees via Dayforce APIs, eliminating test data blockers and unblocking 250+ test cases",
-          "Developed Configr, an AI chatbot that allows users to create/update configurations in a Dayforce environment, enabling clients to set up test environments through natural language text and reducing manual setup by 100+ hours",
-          "Created an interactive agent playground in React.js that renders a graph view of an agent, displaying its active prompts/tools and enabling users to edit their prompts and test changes in real time",
+          "Developed [Deploy](https://www.dayforce.com/ca/blog/dayforce-deploy-hcm-implementation), an automated testing tool that leverages **AI agents** to create and validate Dayforce configurations, saving over **1000+** hours of manual effort",
+          "Built a Python workflow that extracts SQL query filters to guide an AI agent in generating synthetic employees via Dayforce APIs, **eliminating** test data blockers and unblocking **250+** test cases",
+          "Developed Configr, an AI chatbot that allows users to create/update configurations in a Dayforce environment, enabling clients to set up test environments through natural language text and **reducing** manual setup by **100+** hours",
+          "Created an interactive agent playground in **React.js** that renders a graph view of an agent, displaying its active prompts/tools and enabling users to **edit** their prompts and test changes in **real time**",
         ],
       },
       {
