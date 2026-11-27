@@ -1,7 +1,8 @@
 import React from 'react'
 import PageHeader from './PageHeader'
 
-// Points match the resume word for word; **text** marks the phrases the resume bolds.
+// Points match the resume word for word; **text** marks the phrases the resume bolds,
+// and [text](url) marks a phrase that links out.
 // Roles at the same company are grouped under one company heading.
 const experiences = [
   {
@@ -12,11 +13,10 @@ const experiences = [
         position: "Software Engineer I",
         dates: "Sep. 2026 – Present",
         points: [
-          "Developed Stager, an AI agent that generates scenario-specific test employees via Dayforce **APIs** for AI-driven test suites, **eliminating** test data blockers and improving test generation rates by **30%**",
-          "Engineered a **Python** test-data automation workflow that iteratively adjusted SQL queries and orchestrated an AI agent to execute Dayforce API calls, storing pipeline execution history and telemetry as **JSON models**",
-          "Implemented an environment level feature flag, enabling dynamic toggling and controlled rollout of automated employee generation across test environments",
-          "Designed and built reusable, responsive UI components using **React.js** and **Tailwind**, creating an intuitive, seamless interface for end users while leveraging React hooks for state management",
-          "Utilized **Claude Code** with custom skills, MCPs, and plugins to rapidly prototype POCs and deliver end-to-end features, **doubling developer velocity** across sprint deliverables",
+          "Developed [Deploy](https://www.dayforce.com/ca/blog/dayforce-deploy-hcm-implementation), an automated testing tool that leverages **AI agents** to create and validate Dayforce configurations, saving over **1000+** hours of manual effort",
+          "Built a Python workflow that extracts SQL query filters to guide an AI agent in generating synthetic employees via Dayforce APIs, **eliminating** test data blockers and unblocking **250+** test cases",
+          "Developed Configr, an AI chatbot that allows users to create/update configurations in a Dayforce environment, enabling clients to set up test environments through natural language text and **reducing** manual setup by **100+** hours",
+          "Created an interactive agent playground in **React.js** that renders a graph view of an agent, displaying its active prompts/tools and enabling users to **edit** their prompts and test changes in **real time**",
         ],
       },
       {
@@ -109,9 +109,25 @@ const experiences = [
   },
 ]
 
-// Split on **bold** markers: odd-indexed parts are the bolded phrases
-const renderPoint = (point: string) =>
-  point.split(/\*\*(.+?)\*\*/).map((part, i) => (i % 2 === 1 ? <strong key={i}>{part}</strong> : part))
+// Split on **bold** and [link](url) markers; each match yields three parts:
+// the bold text, or the link text and its url
+const renderPoint = (point: string) => {
+  const parts = point.split(/\*\*(.+?)\*\*|\[(.+?)\]\((.+?)\)/)
+  const nodes: React.ReactNode[] = []
+  for (let i = 0; i < parts.length; i += 4) {
+    nodes.push(parts[i])
+    const [bold, linkText, href] = parts.slice(i + 1, i + 4)
+    if (bold) nodes.push(<strong key={i}>{bold}</strong>)
+    if (linkText) {
+      nodes.push(
+        <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="text-link underline underline-offset-2">
+          {linkText}
+        </a>
+      )
+    }
+  }
+  return nodes
+}
 
 const Experience = () => {
   return (
